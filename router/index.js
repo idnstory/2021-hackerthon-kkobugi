@@ -13,6 +13,16 @@ const routes = [
     path: "/timer",
     name: "Timer",
     component: () => import("../src/components/Timer.vue")
+  },
+  {
+    path: "/camera",
+    name: "Camera",
+    component: () => import("../src/components/Camera.vue")
+  },
+  {
+    path: "/ranking",
+    name: "Ranking",
+    component: () => import("../src/components/Ranking.vue")
   }
 ];
 

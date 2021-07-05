@@ -1,12 +1,13 @@
 <template>
-  <div class="kkobuki">
+  <div class="container">
     <h1>스트레칭 꼬북이</h1>
     <p>매일매일 30초 꼬북목 스트레칭 <br />같이 탈출해보자구!</p>
-    <div class="img-box"></div>
-    <img :src="mainImageSrc" />
-    <button type="button" class="btn-start">
-      <router-link to="/timer">시작하기</router-link>
-    </button>
+    <div class="img-box">
+      <img :src="mainImageSrc" />
+    </div>
+    <b-button class="align-self-end" variant="outline-info"
+      ><router-link to="/timer">시작하기</router-link></b-button
+    >
   </div>
 </template>
 
@@ -31,7 +32,7 @@ export default {
       },
       {
         id: "2",
-        image: require("../assets/거북교정.jpg")
+        image: require("../assets/거북교정2.jpg")
       }
     ];
 
@@ -44,12 +45,15 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 a {
-  color: #42b983;
+  color: #0dcaf0;
   text-decoration: none;
   font-size: 20px;
   font-weight: bold;
+  &:hover {
+    color: #fff;
+  }
 }
 .btn-start {
   width: 500px;
@@ -58,7 +62,10 @@ a {
   text-decoration: none;
   margin: 0 auto;
 }
-img {
-  height: 678px;
+.img-box {
+  margin: 0 auto;
+  img {
+    height: 400px;
+  }
 }
 </style>
