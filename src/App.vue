@@ -16,7 +16,7 @@ export default {
   min-width: 320px;
   max-width: 960px;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
   margin: 0 auto;
   border: 1px solid #eee;

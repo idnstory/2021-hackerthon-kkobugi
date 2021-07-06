@@ -1,5 +1,6 @@
 <template>
-  <div class="base-timer">
+  <div class="base-timer centerp-block">
+    <h1>시작합니다!</h1>
     <svg
       class="base-timer__svg"
       viewBox="0 0 100 100"
@@ -32,7 +33,7 @@
 <script>
 const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 5;
-const ALERT_THRESHOLD = 1;
+const ALERT_THRESHOLD = 2;
 const COLOR_CODES = {
   info: {
     color: "green"
@@ -122,8 +123,10 @@ export default {
 <style scoped lang="scss">
 .base-timer {
   position: relative;
-  width: 300px;
-  height: 300px;
+  padding-top: 60px;
+  margin: 0 auto;
+  width: 80%;
+  height: 80%;
 
   &__svg {
     transform: scaleX(-1);
@@ -136,7 +139,7 @@ export default {
 
   &__path-elapsed {
     stroke-width: 7px;
-    stroke: grey;
+    stroke: #fff;
   }
 
   &__path-remaining {
@@ -153,23 +156,24 @@ export default {
     }
 
     &.orange {
-      color: orange;
+      color: #48c9d7;
     }
 
     &.red {
-      color: red;
+      color: #35a5d7;
     }
   }
 
   &__label {
     position: absolute;
-    width: 300px;
-    height: 300px;
-    top: 0;
+    width: 100%;
+    height: 100%;
+    top: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 48px;
+    font-size: 100px;
+    font-weight: bold;
   }
 }
 </style>

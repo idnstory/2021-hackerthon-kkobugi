@@ -1,6 +1,11 @@
 <template>
   <div id="ranking">
-    랭킹
+    <h2>랭킹은?</h2>
+    <ul id="example-1">
+      <li v-for="item in totalLists" v-bind:key="item.id">
+        {{ item.rank }}. {{ item.name }} : {{ item.score }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -8,6 +13,15 @@
 export default {
   name: "Ranking",
   props: {},
+  data() {
+    return {
+      totalLists: [
+        { rank: "", name: "한승", score: "" },
+        { rank: "", name: "지영", score: "" },
+        { rank: "", name: "유리", score: "" }
+      ]
+    };
+  },
   methods: {
     // ranking(count, name) {
     //   const nameAndCount = {

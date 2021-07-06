@@ -5,7 +5,7 @@
     <div class="img-box">
       <img :src="mainImageSrc" />
     </div>
-    <b-button class="align-self-end" variant="outline-info"
+    <b-button class="align-self-end" variant="outline-info" size="lg" block
       ><router-link to="/timer">시작하기</router-link></b-button
     >
   </div>
@@ -46,8 +46,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px;
+}
 a {
-  color: #0dcaf0;
+  color: #48c9d7;
   text-decoration: none;
   font-size: 20px;
   font-weight: bold;
@@ -55,14 +61,18 @@ a {
     color: #fff;
   }
 }
-.btn-start {
-  width: 500px;
-  height: 50px;
+button {
   display: block;
-  text-decoration: none;
   margin: 0 auto;
+  bottom: 42px;
+  width: 500px;
+  color: #48c9d7;
+  &:hover {
+    color: #fff;
+  }
 }
 .img-box {
+  height: 600px;
   margin: 0 auto;
   img {
     height: 400px;

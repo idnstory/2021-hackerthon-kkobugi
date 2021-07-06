@@ -8,6 +8,7 @@
     >
     </transition>
     <h2>동작을 따라해보세요!</h2>
+    <span>진행상황 progressbar?</span>
     <!--progress-->
     <div class="progressContainer">
       <!-- <progress
@@ -26,12 +27,10 @@
             header="스트레칭"
             class="text-center"
           >
-            이미지
-            <!-- questionTitle -->
-            <h2 class="titleContainer title">
-              <!-- {{ questions[questionIndex].text }} -->
-            </h2>
-            <span></span>
+            <li v-for="item in questions" v-bind:key="item.index">
+              <span>{{ item.text }}</span>
+              <img :src="item.image" class="w-100" />
+            </li>
           </b-card>
         </b-col>
         <b-col>
@@ -78,7 +77,6 @@
                 <video
                   v-show="!isPhotoTaken"
                   ref="camera"
-                  :width="450"
                   :height="337.5"
                   autoplay
                 ></video>
@@ -87,7 +85,6 @@
                   v-show="isPhotoTaken"
                   id="photoTaken"
                   ref="canvas"
-                  :width="450"
                   :height="337.5"
                 ></canvas>
               </div>
@@ -103,12 +100,12 @@
               <div v-if="isPhotoTaken && isCameraOpen" class="camera-download">
                 <a
                   id="downloadPhoto"
-                  download="my-photo.jpg"
+                  download="kkobugi.jpg"
                   class="button"
                   role="button"
                   @click="downloadImage"
                 >
-                  Download
+                  내포즈 자랑하기
                 </a>
               </div>
             </div>
@@ -142,13 +139,8 @@ export default {
       link: "#",
       questions: [
         {
-          text: "What is the full form of HTTP?",
-          responses: [
-            { text: "Hyper text transfer package" },
-            { text: "Hyper text transfer protocol", correct: true },
-            { text: "Hyphenation text test program" },
-            { text: "None of the above" }
-          ]
+          text: "1번자세",
+          image: require("../../src/assets/1.png")
         },
         {
           text: "HTML document start and end with which tag pairs?",
@@ -260,6 +252,9 @@ $trans_duration: 0.3s;
 body {
   display: flex;
   justify-content: center;
+  li {
+    list-style: none;
+  }
 }
 
 .web-camera-container {
