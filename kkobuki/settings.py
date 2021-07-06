@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-79a9*zx+ipr%$(_jj1a0gbghs=fzobe+ur#g2ktp6)f7!)v_$3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-13-209-9-201.ap-northeast-2.compute.amazonaws.com', 'kkobuki.haezoom.io','127.0.0.1']
+ALLOWED_HOSTS = ['ec2-13-209-9-201.ap-northeast-2.compute.amazonaws.com', 'kkobuki.haezoom.io','127.0.0.1', 'localhost']
 
 
 # Application definition
