@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'stretchingapp',
     'helloworld',
+    'rankingapp',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
