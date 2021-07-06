@@ -20,6 +20,11 @@ const routes = [
     component: () => import("../src/components/Camera.vue")
   },
   {
+    path: "/camera1",
+    name: "Camera1",
+    component: () => import("../src/components/Camera1.vue")
+  },
+  {
     path: "/ranking",
     name: "Ranking",
     component: () => import("../src/components/Ranking.vue")
