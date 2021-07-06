@@ -8,6 +8,12 @@
     <b-button class="align-self-end" variant="outline-info" size="lg" block
       ><router-link to="/timer">시작하기</router-link></b-button
     >
+    <audio autoplay loop>
+      <source
+        src="../assets/02 Adventure (Title Screen).mp3"
+        type="audio/mp3"
+      />
+    </audio>
   </div>
 </template>
 
