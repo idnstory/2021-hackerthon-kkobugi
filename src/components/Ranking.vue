@@ -13,7 +13,7 @@
       size="lg"
       @click="replay()"
       block
-      >Replay</b-button
+      >다시하기</b-button
     >
     <audio autoplay>
       <source src="../assets/complete2.mp3" type="audio/mp3" />
@@ -68,7 +68,16 @@ export default {
   }
 }
 tbody {
-  font-size: 20px;
+  height: 200px;
+  overflow-y: auto;
+  width: 100%;
+}
+thead,
+tbody,
+tr,
+td,
+th {
+  display: block;
 }
 li {
   list-style: none;

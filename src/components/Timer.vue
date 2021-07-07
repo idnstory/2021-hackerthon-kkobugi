@@ -1,10 +1,9 @@
 <template>
   <div class="base-timer centerp-block">
     <h1 class="font-50">스트레칭방법</h1>
-    <ul>
-      <li>전신이 모두 나오도록 카메라 앞에서 주세요</li>
-      <li>동작을 5초동안 유지해줍니다.</li>
-      <li>올바르게 동작을 취했는지 결과확인하기!</li>
+    <ul class="mb-4">
+      <li>상반신이 나오도록 카메라에 서주세요</li>
+      <li>동작을 5초동안 유지해주세요</li>
     </ul>
     <svg
       class="base-timer__svg"
@@ -139,7 +138,7 @@ export default {
 }
 li {
   list-style: none;
-  font-size: 20px;
+  font-size: 25px;
 }
 .base-timer {
   position: relative;
@@ -176,7 +175,7 @@ li {
     }
 
     &.orange {
-      color: #48c9d7;
+      color: #0dcaf0;
     }
 
     &.red {

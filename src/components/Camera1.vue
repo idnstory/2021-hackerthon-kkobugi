@@ -1,8 +1,7 @@
 <template>
   <div class="my-4 container">
-    <h2 class="font-50">동작을 따라해보세요!</h2>
+    <h2 class="font-50 mb-4">{{ getName }}님, 동작을 따라해보세요!</h2>
     <div class="text-right">
-      <span class="font-30">[{{ myname }}]님 안녕하세요!            </span>
       <span class="font-30">스코어: {{ score }} /100</span>
     </div>
     <b-card-group deck>
@@ -26,10 +25,9 @@
         </b-col>
       </b-row>
     </b-card-group>
-    <p class="font-50" :class="[resultAnswer ? sucessClass : '', errorClass]">
+    <p class="font-50" :class="{ green: checkColor, danger: !checkColor }">
       결과는? {{ resultAnswer }}
     </p>
-    <span class="font-50">내점수는? {{ score }} /100</span>
     <audio autoplay loop>
       <source src="../assets/main_theme.mp3" type="audio/mp3" />
     </audio>
@@ -48,9 +46,10 @@ export default {
   data() {
     return {
       imageIndex: 0,
+      checkColor: true,
       resultAnswer: "",
-      sucessClass: "text-green",
-      errorClass: "text-danger",
+      sucessClass: "green",
+      errorClass: "danger",
       score: 0,
       imageArray: [
         {
@@ -184,13 +183,15 @@ export default {
       }
     },
     resultMessage: function() {
-      if (this.getImageAnswer == this.getItems) {
-        this.resultAnswer = "정확한 자세입니다!";
+      if (this.getImageAnswer === this.getItems) {
+        this.resultAnswer = "GOOD!";
+        this.checkColor = true;
         this.score += 10;
         console.log("정답!", this.getImageAnswer, this.getItems);
       } else {
-        this.resultAnswer = "더 노력해보세요";
-        console.log("오답입니다!.", this.getImageAnswer, this.getItems);
+        this.resultAnswer = "BAD";
+        this.checkColor = false;
+        console.log("오답!", this.getImageAnswer, this.getItems);
       }
     }
   },
@@ -203,6 +204,9 @@ export default {
     },
     getItems() {
       return localStorage.getItem("classified");
+    },
+    getName() {
+      return (this.getname = localStorage.getItem("myname"));
     }
   },
   watch: {},
@@ -210,45 +214,14 @@ export default {
   beforeMount() {
     this.init();
   },
-  created() {
-        const nameList = [
-          "전지현",
-          "강동원",
-          "뷔",
-          "정국",
-          "수지",
-          "조정석",
-          "유재석",
-          "정유미",
-          "아이유",
-          "박진영",
-          "안영미",
-          "박나래",
-          "이영자",
-          "강호동",
-          "이은형",
-          "이재준",
-          "송은이",
-          "이경규",
-          "이효리",
-          "송혜교",
-          "제니",
-          "화사",
-          "지민",
-          "진",
-          "제이홉",
-          "RM",
-          "천재"
-        ];
-    this.myname = nameList[Math.floor(Math.random() * nameList.length)];
-  },
+  created() {},
   mounted() {
     let intervalID = setInterval(() => {
       this.imageIndex++;
       if (this.imageIndex == this.imageArray.length) {
         axios
           .post("http://kkobuki.haezoom.io:8080/ranking/ranking/", {
-            name: this.myname,
+            name: this.getName,
             score: this.score
           })
           .then(function(response) {
@@ -261,24 +234,29 @@ export default {
         clearInterval(intervalID);
       }
       this.resultMessage();
-    }, 5000);
+    }, 7000);
   }
 };
 </script>
 <style lang="scss" scoped>
 .container {
   padding: 20px;
+  #label-container {
+    display: none !important;
+  }
+}
+h2 {
+  margin-top: 30px;
 }
 .text-right {
   text-align: right;
 }
-.label-container {
-  display: none;
-}
-.text-danger {
+.danger {
+  margin-top: 20px;
   color: red;
 }
-.text-green {
+.green {
+  margin-top: 20px;
   color: green;
 }
 .font {
