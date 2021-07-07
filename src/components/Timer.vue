@@ -2,9 +2,9 @@
   <div class="base-timer centerp-block">
     <h1>스트레칭방법</h1>
     <ul>
-      <li>전신이 모두 나오도록 카메라 앞에 서 주세요</li>
+      <li>전신이 모두 나오도록 카메라 앞에서 주세요</li>
       <li>동작을 5초동안 유지해줍니다.</li>
-      <li>올바르게 동작을 취했는지 결과확인</li>
+      <li>올바르게 동작을 취했는지 결과확인하기!</li>
     </ul>
     <svg
       class="base-timer__svg"
@@ -38,7 +38,7 @@
 <script>
 const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 5;
-const ALERT_THRESHOLD = 2;
+const ALERT_THRESHOLD = 3;
 const COLOR_CODES = {
   info: {
     color: "green"

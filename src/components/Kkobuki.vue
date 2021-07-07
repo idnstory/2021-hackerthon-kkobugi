@@ -1,13 +1,22 @@
 <template>
   <div class="container">
-    <h1>스트레칭 꼬북이</h1>
-    <p>매일매일 30초 꼬북목 스트레칭 <br />같이 탈출해보자구!</p>
+    <h1 class="font-50">스트레칭 꼬북이</h1>
+    <p class="font-20">
+      매일매일 30초 꼬북목 스트레칭 <br />같이 탈출해보자구!
+    </p>
     <div class="img-box">
       <img :src="mainImageSrc" />
     </div>
-    <b-button class="align-self-end" variant="outline-info" size="lg" block
-      ><router-link to="/timer">시작하기</router-link></b-button
+
+    <b-button
+      class="align-self-end"
+      variant="outline-info"
+      size="lg"
+      to="/timer"
+      block
+      >시작하기</b-button
     >
+
     <audio autoplay loop>
       <source
         src="../assets/02 Adventure (Title Screen).mp3"
@@ -52,25 +61,25 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.font {
+  &-20 {
+    font-size: 20px;
+  }
+  &-50 {
+    font-size: 50px;
+  }
+}
 .container {
   position: relative;
   display: flex;
   flex-direction: column;
   padding-top: 60px;
 }
+
 a {
-  width: 500px;
-  color: #48c9d7;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: bold;
-  &:hover {
-    color: #fff;
-  }
-}
-button {
   display: block;
   margin: 0 auto;
+  width: 100%;
   bottom: 42px;
   width: 500px;
   color: #48c9d7;

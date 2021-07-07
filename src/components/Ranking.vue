@@ -1,22 +1,21 @@
 <template>
-  <div id="ranking">
-<!--
-    <h2>랭킹은?</h2>
-    <ul id="example-1">
-      <li v-for="item in totalLists" v-bind:key="item.id">
-        {{ item.rank }}. {{ item.name }} : {{ item.score }}
-      </li>
-    </ul>
--->
-    <h2>오늘의 랭킹</h2>
+  <div id="ranking" class="container">
+    <h2>오늘의 랭킹:</h2>
     <p>
     <ul id="example-2">
-      <li v-for="(i, index) in info">
-        {{ index }} : {{ i.name }} : {{ i.score }} : {{ i.created }}
+      <li v-for="(item,index) in infoList" v-bind:key="item.id">
+         {{ index }} : {{ item.name }} : {{ item.score }} : {{ item.created }}
       </li>
     </ul>
     </p>
-    <button type="button" @click="replay()">Replay</button>
+    <b-button
+      class="align-self-end"
+      variant="outline-info"
+      size="lg"
+      @click="replay()"
+      block
+      >Replay</b-button
+    >
   </div>
 </template>
 
@@ -28,12 +27,9 @@ export default {
   props: {},
   data() {
     return {
-      totalLists: [
-        { rank: "", name: "한승", score: "" },
-        { rank: "", name: "지영", score: "" },
-        { rank: "", name: "유리", score: "" }
-      ],
-      info: null
+      infoList: {
+        created: '',
+      },
     };
   },
   methods: {
@@ -69,14 +65,27 @@ export default {
           this.$router.push({ path: '/' });
     },
   },
+  coumputed: {
+    listDate() {
+      return this.infoList.created
+    }
+  },
   mounted () {
     axios
       //.get('https://api.coindesk.com/v1/bpi/currentprice.json')
       .get('http://kkobuki.haezoom.io:8080/ranking/ranking/')
-      .then(response => (this.info = response.data))
+      .then(response => (this.infoList = response.data))
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style lang="scss" scoped>
+  .container {
+
+  }
+  li {
+    list-style: none;
+    font-size: 20px;
+  }
+</style>

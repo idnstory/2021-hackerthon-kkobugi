@@ -200,10 +200,11 @@ export default {
     let intervalID = setInterval(() => {
       this.imageIndex++;
       if (this.imageIndex == this.imageArray.length) {
+        this.$router.push("/ranking");
         clearInterval(intervalID);
       }
       this.resultMessage();
-    }, 10000);
+    }, 5000);
   }
 };
 </script>
