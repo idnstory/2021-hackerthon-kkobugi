@@ -71,8 +71,8 @@ export default {
       // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
       // Note: the pose library adds a tmPose object to your window (window.tmPose)
       model = await tmPose.load(
-        "https://teachablemachine.withgoogle.com/models/Wkb2tGYGr/model.json",
-        "https://teachablemachine.withgoogle.com/models/Wkb2tGYGr/metadata.json"
+        "https://teachablemachine.withgoogle.com/models/fAbOcVsYc/model.json",
+        "https://teachablemachine.withgoogle.com/models/fAbOcVsYc/metadata.json"
       );
       maxPredictions = model.getTotalClasses();
 
