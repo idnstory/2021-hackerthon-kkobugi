@@ -27,9 +27,7 @@ export default {
   props: {},
   data() {
     return {
-      infoList: {
-        created: '',
-      },
+      infoList: '',
     };
   },
   methods: {
@@ -66,9 +64,9 @@ export default {
     },
   },
   coumputed: {
-    listDate() {
-      return this.infoList.created
-    }
+    // listDate() {
+    //   return this.infoList.created
+    // }
   },
   mounted () {
     axios
