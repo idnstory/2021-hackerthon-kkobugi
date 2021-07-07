@@ -6,7 +6,8 @@ from django.conf.urls import url
 
 router = routers.DefaultRouter()
 router.register(r'ranking', views.RankingViewset)
-                                                                                                                       
+router.register(r'rankingtest', views.RankingViewsetTest)
+
 
 urlpatterns = [
     url(r'^',include(router.urls)),
