@@ -5,8 +5,8 @@ from rest_framework import routers
 from django.conf.urls import url
 
 router = routers.DefaultRouter()
-router.register(r'ranking', views.RankingViewset)
-router.register(r'rankingtest', views.RankingViewsetTest)
+router.register(r'ranking', views.RankingViewset, basename="ranking")
+router.register(r'rankingtest', views.RankingViewsetTest, basename="rankingtest")
 
 
 urlpatterns = [
