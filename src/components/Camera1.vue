@@ -25,7 +25,7 @@
     <p class="font-50" :class="[resultAnswer ? sucessClass : '', errorClass]">
       결과는? {{ resultAnswer }}
     </p>
-    <span>{{ score }}</span>
+    <span class="font-50">내점수는? {{ score }} /100</span>
   </div>
 </template>
 <script>
