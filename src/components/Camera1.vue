@@ -1,7 +1,6 @@
 <template>
   <div>
     <h2>동작을 따라해보세요!</h2>
-    <button type="button" @click="init">Start</button>
     <b-card-group deck>
       <b-row>
         <b-col>
@@ -24,23 +23,25 @@
             header="카메라"
             class="text-center"
           >
+            <div><canvas id="canvas"></canvas></div>
+            <div id="label-container"></div>
           </b-card>
         </b-col>
       </b-row>
     </b-card-group>
-    <div><canvas id="canvas"></canvas></div>
-    <div id="label-container"></div>
   </div>
 </template>
 <script>
+import Timer from "./Timer.vue";
 // const URL = "../ml_files/5pose0706mlmodel/";
 // const modelURL = URL + "model.json";
 // const metadataURL = URL + "metadata.json";
 let model, webcam, ctx, labelContainer, maxPredictions;
-const url1 = require("../../src/assets/1.jpeg");
+// const url1 = require("../../src/assets/1.jpeg");
 export default {
   name: "Camera1",
-  props: {},
+
+  Timerprops: {},
   data() {
     return {
       // imgUrl: questions.image,
@@ -51,14 +52,19 @@ export default {
         },
         {
           text: "2번자세",
-          image: require("../../src/assets/1.png")
+          image: require("../../src/assets/2.jpeg")
+        },
+        {
+          text: "3번자세",
+          image: require("../../src/assets/3.jpeg")
+        },
+        {
+          text: "4번자세",
+          image: require("../../src/assets/3.jpeg")
         }
       ]
     };
   },
-  computed: {},
-  watch: {},
-  created: {},
   methods: {
     init: async function() {
       // load the model and metadata
@@ -130,13 +136,14 @@ export default {
           tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
         }
       }
-    },
-    testFunction() {
-      setTimeout(function() {}, 3000);
     }
   },
-  mounted() {
-    // this.testFunction();
-  }
+  computed: {},
+  watch: {},
+  // created: {},
+  beforeMount() {
+    this.init();
+  },
+  mounted() {}
 };
 </script>
