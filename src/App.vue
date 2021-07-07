@@ -11,6 +11,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
 #app {
   min-width: 320px;
   max-width: 960px;
@@ -20,13 +21,13 @@ export default {
   margin: 0 auto;
   border: 1px solid #eee;
   -webkit-font-smoothing: antialiased;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Black Han Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   body {
-    font-family: "Spoqa Han Sans", "Spoqa Han Sans JP", "Sans-serif";
+    font-family: "Black Han Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;

@@ -1,6 +1,11 @@
 <template>
   <div class="base-timer centerp-block">
-    <h1>시작합니다!</h1>
+    <h1>스트레칭방법</h1>
+    <ul>
+      <li>전신이 모두 나오도록 카메라 앞에 서 주세요</li>
+      <li>동작을 5초동안 유지해줍니다.</li>
+      <li>올바르게 동작을 취했는지 결과확인</li>
+    </ul>
     <svg
       class="base-timer__svg"
       viewBox="0 0 100 100"
@@ -121,12 +126,16 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+li {
+  list-style: none;
+  font-size: 20px;
+}
 .base-timer {
   position: relative;
   padding-top: 60px;
   margin: 0 auto;
-  width: 80%;
-  height: 80%;
+  width: 50%;
+  height: 50%;
 
   &__svg {
     transform: scaleX(-1);
@@ -168,7 +177,7 @@ export default {
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 60px;
+    top: 100px;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,6 +1,6 @@
 <template>
   <div class="p-8">
-    <h2>동작을 따라해보세요!</h2>
+    <h2 class="font-50">동작을 따라해보세요!</h2>
     <b-card-group deck>
       <b-row>
         <b-col>
@@ -15,18 +15,16 @@
           </b-card>
         </b-col>
         <b-col>
-          <b-card
-            bg-variant="light"
-            text-variant="white"
-            header="카메라"
-            class="text-center"
-          >
+          <b-card bg-variant="light" header="카메라" class="text-center">
             <div><canvas id="canvas"></canvas></div>
             <div id="label-container"></div>
           </b-card>
         </b-col>
       </b-row>
     </b-card-group>
+    <p class="font-50" :class="[resultAnswer1 ? sucessClass : '', errorClass]">
+      결과는? {{ resultAnswer }}
+    </p>
   </div>
 </template>
 <script>
@@ -41,46 +39,60 @@ export default {
   data() {
     return {
       imageIndex: 0,
+      resultAnswer: true,
+      resultAnswer: "",
+      sucessClass: "text-green",
+      errorClass: "text-danger",
       imageArray: [
         {
           text: "1번자세",
-          image: require("@/assets/pose1-1.png")
+          image: require("@/assets/pose1-1.png"),
+          answer: "pose1"
         },
         {
           text: "2번자세",
-          image: require("@/assets/pose2-1.png")
+          image: require("@/assets/pose2-1.png"),
+          answer: "pose2"
         },
         {
           text: "3번자세",
-          image: require("@/assets/pose3-1.png")
+          image: require("@/assets/pose3-1.png"),
+          answer: "pose3"
         },
         {
           text: "4번자세",
-          image: require("@/assets/pose4-1.png")
+          image: require("@/assets/pose4-1.png"),
+          answer: "pose4"
         },
         {
           text: "5번자세",
-          image: require("@/assets/pose5-1.png")
+          image: require("@/assets/pose5-1.png"),
+          answer: "pose4"
         },
         {
           text: "6번자세",
-          image: require("@/assets/pose6-1.png")
+          image: require("@/assets/pose6-1.png"),
+          answer: "pose4"
         },
         {
           text: "7번자세",
-          image: require("@/assets/pose7-1.png")
+          image: require("@/assets/pose7-1.png"),
+          answer: "pose4"
         },
         {
           text: "8번자세",
-          image: require("@/assets/pose8-1.png")
+          image: require("@/assets/pose8-1.png"),
+          answer: "pose4"
         },
         {
           text: "9번자세",
-          image: require("@/assets/pose9-1.png")
+          image: require("@/assets/pose9-1.png"),
+          answer: "pose4"
         },
         {
           text: "10번자세",
-          image: require("@/assets/pose10-1.png")
+          image: require("@/assets/pose10-1.png"),
+          answer: "pose4"
         }
       ]
     };
@@ -140,7 +152,7 @@ export default {
       }
 
       const classified = "classified";
-      console.log(maxValueClassName);
+      // console.log(maxValueClassName);
       localStorage.setItem(classified, maxValueClassName);
 
       // finally draw the poses
@@ -156,11 +168,27 @@ export default {
           tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
         }
       }
+    },
+    resultMessage: function() {
+      if (this.getImageAnswer == this.getItems) {
+        const audio = new Audio("../assets/더 노력해보세요.mp3"); // path to file
+        audio.play();
+        this.resultAnswer = "정확한 자세입니다!";
+      } else {
+        this.resultAnswer = "더 노력해보세요";
+        console.log("오답입니다!.", this.getImageAnswer, this.getItems);
+      }
     }
   },
   computed: {
     currentVO() {
       return this.imageArray[this.imageIndex];
+    },
+    getImageAnswer() {
+      return this.currentVO.answer;
+    },
+    getItems() {
+      return localStorage.getItem("classified");
     }
   },
   watch: {},
@@ -174,7 +202,28 @@ export default {
       if (this.imageIndex == this.imageArray.length) {
         clearInterval(intervalID);
       }
-    }, 5000);
+      this.resultMessage();
+    }, 10000);
   }
 };
 </script>
+<style lang="scss" scoped>
+.text-danger {
+  color: red;
+}
+.text-green {
+  color: green;
+}
+.font-20 {
+  font-size: 20px;
+}
+.font-30 {
+  font-size: 30px;
+}
+.font-50 {
+  font-size: 50px;
+}
+.card-header {
+  font-size: 30px;
+}
+</style>
