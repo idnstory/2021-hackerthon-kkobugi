@@ -28,6 +28,10 @@
     <p class="font-50" :class="[resultAnswer ? sucessClass : '', errorClass]">
       결과는? {{ resultAnswer }}
     </p>
+    <span class="font-50">내점수는? {{ score }} /100</span>
+    <audio autoplay loop>
+      <source src="../assets/main_theme.mp3" type="audio/mp3" />
+    </audio>
   </div>
 </template>
 <script>
