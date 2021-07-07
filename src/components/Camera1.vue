@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-8">
     <h2>동작을 따라해보세요!</h2>
     <b-card-group deck>
       <b-row>
@@ -10,10 +10,8 @@
             header="스트레칭"
             class="text-center"
           >
-            <li v-for="item in questions" v-bind:key="item.index">
-              <span>{{ item.text }}</span>
-              <img :src="item.image" class="w-100" />
-            </li>
+            <span>{{ currentVO.text }}</span>
+            <img :src="currentVO.image" class="img-loader w-100" />
           </b-card>
         </b-col>
         <b-col>
@@ -44,49 +42,48 @@ export default {
   Timerprops: {},
   data() {
     return {
-      // imgUrl: questions.image,
-      questions: [
+      imageIndex: 0,
+      imageArray: [
         {
           text: "1번자세",
-          image: require("../../src/assets/pose1-1.png")
+          image: require("@/assets/pose1-1.png")
         },
         {
           text: "2번자세",
-          image: require("../../src/assets/pose2-1.png")
+          image: require("@/assets/pose2-1.png")
         },
         {
           text: "3번자세",
-          image: require("../../src/assets/pose3-1.png")
+          image: require("@/assets/pose3-1.png")
         },
         {
           text: "4번자세",
-          image: require("../../src/assets/pose4-1.png")
+          image: require("@/assets/pose4-1.png")
         },
         {
           text: "5번자세",
-          image: require("../../src/assets/pose5-1.png")
+          image: require("@/assets/pose5-1.png")
         },
         {
           text: "6번자세",
-          image: require("../../src/assets/pose6-1.png")
+          image: require("@/assets/pose6-1.png")
         },
         {
           text: "7번자세",
-          image: require("../../src/assets/pose7-1.png")
+          image: require("@/assets/pose7-1.png")
         },
         {
           text: "8번자세",
-          image: require("../../src/assets/pose8-1.png")
+          image: require("@/assets/pose8-1.png")
         },
         {
           text: "9번자세",
-          image: require("../../src/assets/pose9-1.png")
+          image: require("@/assets/pose9-1.png")
         },
         {
           text: "10번자세",
-          image: require("../../src/assets/pose10-1.png")
-        },
-        
+          image: require("@/assets/pose10-1.png")
+        }
       ]
     };
   },
@@ -102,7 +99,7 @@ export default {
       maxPredictions = model.getTotalClasses();
 
       // Convenience function to setup a webcam
-      const size = 200;
+      const size = 400;
       const flip = true; // whether to flip the webcam
       webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
       await webcam.setup(); // request access to the webcam
@@ -163,12 +160,23 @@ export default {
       }
     }
   },
-  computed: {},
+  computed: {
+    currentVO() {
+      return this.imageArray[this.imageIndex];
+    }
+  },
   watch: {},
   // created: {},
   beforeMount() {
     this.init();
   },
-  mounted() {}
+  mounted() {
+    let intervalID = setInterval(() => {
+      this.imageIndex++;
+      if (this.imageIndex == this.imageArray.length) {
+        clearInterval(intervalID);
+      }
+    }, 5000);
+  }
 };
 </script>
