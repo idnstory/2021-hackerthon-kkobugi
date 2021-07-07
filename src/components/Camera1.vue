@@ -48,20 +48,45 @@ export default {
       questions: [
         {
           text: "1번자세",
-          image: require("../../src/assets/1.jpeg")
+          image: require("../../src/assets/pose1-1.png")
         },
         {
           text: "2번자세",
-          image: require("../../src/assets/2.jpeg")
+          image: require("../../src/assets/pose2-1.png")
         },
         {
           text: "3번자세",
-          image: require("../../src/assets/3.jpeg")
+          image: require("../../src/assets/pose3-1.png")
         },
         {
           text: "4번자세",
-          image: require("../../src/assets/3.jpeg")
-        }
+          image: require("../../src/assets/pose4-1.png")
+        },
+        {
+          text: "5번자세",
+          image: require("../../src/assets/pose5-1.png")
+        },
+        {
+          text: "6번자세",
+          image: require("../../src/assets/pose6-1.png")
+        },
+        {
+          text: "7번자세",
+          image: require("../../src/assets/pose7-1.png")
+        },
+        {
+          text: "8번자세",
+          image: require("../../src/assets/pose8-1.png")
+        },
+        {
+          text: "9번자세",
+          image: require("../../src/assets/pose9-1.png")
+        },
+        {
+          text: "10번자세",
+          image: require("../../src/assets/pose10-1.png")
+        },
+        
       ]
     };
   },
