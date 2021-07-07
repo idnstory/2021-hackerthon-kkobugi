@@ -10,7 +10,9 @@ Vue.loadScript(
 Vue.loadScript(
   "https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"
 );
-
+Vue.loadScript(
+  "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"
+);
 const routes = [
   {
     path: "/",

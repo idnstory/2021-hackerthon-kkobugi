@@ -22,7 +22,9 @@
             class="text-center"
           >
             <div><canvas id="canvas"></canvas></div>
+            <button type="button" @click="SaveUploadImage">save canvas to image</button>
             <div id="label-container"></div>
+            <input type="file" accept="image/*" @change="SaveUploadImage($event)" id="file-input">
           </b-card>
         </b-col>
       </b-row>
@@ -114,6 +116,45 @@ export default {
         // and class labels
         labelContainer.appendChild(document.createElement("div"));
       }
+    },
+    SaveUploadImage: function(){
+      //save
+      const canvas_img = document.getElementById("canvas")
+        .toDataURL("image/jpeg")
+        .replace("image/jpeg", "image/octet-stream");
+      console.log(canvas_img);
+      var link = document.createElement('a');
+      link.download = "my-image.png";
+      link.href = canvas_img;
+      link.click();
+      console.log("save1");
+
+      //save2
+      console.log("second upload logic");
+      var imgDataUrl = document.getElementById("canvas").toDataURL('image/png');
+    
+      var blobBin = atob(imgDataUrl.split(',')[1]);	// base64 데이터 디코딩
+      var array = [];
+      for (var i = 0; i < blobBin.length; i++) {
+          array.push(blobBin.charCodeAt(i));
+      }
+      var file = new Blob([new Uint8Array(array)], {type: 'image/png'});	// Blob 생성
+      var formdata = new FormData();	// formData 생성
+      formdata.append("file", file);	// file data 추가
+
+      $.ajax({
+        type : 'get',
+        url : 'http://kkobuki.haezoom.io:8080/ranking/rankingtest',
+        data : formdata,
+        processData : false,	// data 파라미터 강제 string 변환 방지!!
+        contentType : false,	// application/x-www-form-urlencoded; 방지!!
+        success : function (data) {
+            console.log("success transer data");
+            console.log(data);
+        }
+        
+    });
+      //upload
     },
     loop: async function(timestamp) {
       webcam.update(); // update the webcam frame
