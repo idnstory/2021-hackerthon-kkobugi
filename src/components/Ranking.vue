@@ -1,16 +1,18 @@
 <template>
   <div id="ranking">
+<!--
     <h2>랭킹은?</h2>
     <ul id="example-1">
       <li v-for="item in totalLists" v-bind:key="item.id">
         {{ item.rank }}. {{ item.name }} : {{ item.score }}
       </li>
     </ul>
-    <h2>오늘의 랭킹:</h2>
+-->
+    <h2>오늘의 랭킹</h2>
     <p>
     <ul id="example-2">
-      <li v-for="i in info">
-        {{ i.name }} : {{ i.score }} : {{ i.created }}
+      <li v-for="(i, index) in info">
+        {{ index }} : {{ i.name }} : {{ i.score }} : {{ i.created }}
       </li>
     </ul>
     </p>
