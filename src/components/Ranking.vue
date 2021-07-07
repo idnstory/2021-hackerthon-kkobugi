@@ -16,6 +16,12 @@
       block
       >Replay</b-button
     >
+    <audio autoplay>
+      <source
+        src="../assets/complete2.mp3"
+        type="audio/mp3"
+      />
+    </audio>
   </div>
 </template>
 
