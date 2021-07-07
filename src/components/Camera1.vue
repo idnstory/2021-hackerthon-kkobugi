@@ -47,7 +47,7 @@ export default {
       score: 0,
       imageArray: [
         {
-          text: "자세준비중",
+          text: "",
           image: require("@/assets/거북남준비중1.jpg"),
           answer: "white"
         },
@@ -176,21 +176,6 @@ export default {
         }
       }
     },
-    submitResult: function() {
-      console.log(this.score);
-      const url = "http://kkobuki.haezoom.io:8080/ranking/ranking/";
-      const data = {
-        score: this.score
-      };
-      axios
-        .post(url, data)
-        .then(function(response) {
-          console.log(response);
-        })
-        .catch(function(error) {
-          console.log(response);
-        });
-    },
     resultMessage: function() {
       if (this.getImageAnswer == this.getItems) {
         this.resultAnswer = "정확한 자세입니다!";
@@ -221,9 +206,40 @@ export default {
     let intervalID = setInterval(() => {
       this.imageIndex++;
       if (this.imageIndex == this.imageArray.length) {
+        const nameList = [
+          "전지현",
+          "강동원",
+          "뷔",
+          "정국",
+          "수지",
+          "조정석",
+          "유재석",
+          "정유미",
+          "아이유",
+          "박진영",
+          "안영미",
+          "박나래",
+          "이영자",
+          "강호동",
+          "이은형",
+          "이재준",
+          "송은이",
+          "이경규",
+          "이효리",
+          "송혜교",
+          "제니",
+          "화사",
+          "지민",
+          "진",
+          "제이홉",
+          "RM",
+          "천재"
+        ];
+        const randomName =
+          nameList[Math.floor(Math.random() * nameList.length)];
         axios
           .post("http://kkobuki.haezoom.io:8080/ranking/ranking/", {
-            name: "하유리다",
+            name: randomName,
             score: this.score
           })
           .then(function(response) {
