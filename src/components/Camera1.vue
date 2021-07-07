@@ -22,12 +22,14 @@
         </b-col>
       </b-row>
     </b-card-group>
-    <p class="font-50" :class="[resultAnswer1 ? sucessClass : '', errorClass]">
+    <p class="font-50" :class="[resultAnswer ? sucessClass : '', errorClass]">
       결과는? {{ resultAnswer }}
     </p>
+    <span>{{ score }}</span>
   </div>
 </template>
 <script>
+import axios from "axios";
 // const URL = "../ml_files/5pose0706mlmodel/";
 // const modelURL = URL + "model.json";
 // const metadataURL = URL + "metadata.json";
@@ -39,10 +41,10 @@ export default {
   data() {
     return {
       imageIndex: 0,
-      resultAnswer: true,
       resultAnswer: "",
       sucessClass: "text-green",
       errorClass: "text-danger",
+      score: 0,
       imageArray: [
         {
           text: "자세준비중",
@@ -174,11 +176,25 @@ export default {
         }
       }
     },
+    submitResult: function() {
+      console.log(this.score);
+      const url = "http://kkobuki.haezoom.io:8080/ranking/ranking/";
+      const data = {
+        score: this.score
+      };
+      axios
+        .post(url, data)
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(response);
+        });
+    },
     resultMessage: function() {
       if (this.getImageAnswer == this.getItems) {
-        const audio = new Audio("../assets/더 노력해보세요.mp3"); // path to file
-        audio.play();
         this.resultAnswer = "정확한 자세입니다!";
+        this.score += 10;
       } else {
         this.resultAnswer = "더 노력해보세요";
         console.log("오답입니다!.", this.getImageAnswer, this.getItems);
@@ -205,6 +221,17 @@ export default {
     let intervalID = setInterval(() => {
       this.imageIndex++;
       if (this.imageIndex == this.imageArray.length) {
+        axios
+          .post("http://kkobuki.haezoom.io:8080/ranking/ranking/", {
+            name: "하유리다",
+            score: this.score
+          })
+          .then(function(response) {
+            console.log(response);
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
         this.$router.push("/ranking");
         clearInterval(intervalID);
       }

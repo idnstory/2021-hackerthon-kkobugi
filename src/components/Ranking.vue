@@ -37,31 +37,7 @@ export default {
     };
   },
   methods: {
-    // ranking(count, name) {
-    //   const nameAndCount = {
-    //     name: name,
-    //     count: count
-    //   };
-    //   // nameAndCountArray.push(nameAndCount);
-    //   // nameAndCountArray.sort(NumberCompare);
-    //   const rankingElem = document.getElementById("ranking");
-    //   const printArray = [];
-    //   for (var i = 0; i < nameAndCountArray.length; i++) {
-    //     if (i >= 5) {
-    //       break;
-    //     }
-    //     printArray.push(
-    //       i +
-    //         1 +
-    //         "등 : " +
-    //         nameAndCountArray[i].name +
-    //         " " +
-    //         nameAndCountArray[i].count +
-    //         "회"
-    //     );
-    //   }
-    //   rankingElem.innerHTML = printArray.join("<br/>");
-    // },
+
     NumberCompare(a, b) {
       return a.count - b.count;
     },
@@ -86,7 +62,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
   .container {
-
+    // display: flex;
+    // flex-direction: column;
   }
   li {
     list-style: none;
