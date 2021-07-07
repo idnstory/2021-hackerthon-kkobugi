@@ -6,10 +6,21 @@
         {{ item.rank }}. {{ item.name }} : {{ item.score }}
       </li>
     </ul>
+    <h2>오늘의 랭킹:</h2>
+    <p>
+    <ul id="example-2">
+      <li v-for="i in info">
+        {{ i.name }} : {{ i.score }} : {{ i.created }}
+      </li>
+    </ul>
+    </p>
+    <button type="button" @click="replay()">Replay</button>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Ranking",
   props: {},
@@ -19,7 +30,8 @@ export default {
         { rank: "", name: "한승", score: "" },
         { rank: "", name: "지영", score: "" },
         { rank: "", name: "유리", score: "" }
-      ]
+      ],
+      info: null
     };
   },
   methods: {
@@ -50,8 +62,17 @@ export default {
     // },
     NumberCompare(a, b) {
       return a.count - b.count;
-    }
-  }
+    },
+    replay() {
+          this.$router.push({ path: '/' });
+    },
+  },
+  mounted () {
+    axios
+      //.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .get('http://kkobuki.haezoom.io:8080/ranking/ranking/')
+      .then(response => (this.info = response.data))
+  },
 };
 </script>
 
