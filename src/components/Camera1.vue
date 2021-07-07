@@ -180,6 +180,7 @@ export default {
       if (this.getImageAnswer == this.getItems) {
         this.resultAnswer = "정확한 자세입니다!";
         this.score += 10;
+        console.log("정답!", this.getImageAnswer, this.getItems);
       } else {
         this.resultAnswer = "더 노력해보세요";
         console.log("오답입니다!.", this.getImageAnswer, this.getItems);
