@@ -67,7 +67,17 @@ export default {
   flex-direction: column;
   padding-top: 60px;
 }
-
+.font {
+  &-20 {
+    font-size: 20px;
+  }
+  &-30 {
+    font-size: 20px;
+  }
+  &-50 {
+    font-size: 50px;
+  }
+}
 a {
   display: block;
   margin: 0 auto;

@@ -220,14 +220,16 @@ export default {
 .text-green {
   color: green;
 }
-.font-20 {
-  font-size: 20px;
-}
-.font-30 {
-  font-size: 30px;
-}
-.font-50 {
-  font-size: 50px;
+.font {
+  &-20 {
+    font-size: 20px;
+  }
+  &-30 {
+    font-size: 20px;
+  }
+  &-50 {
+    font-size: 50px;
+  }
 }
 .card-header {
   font-size: 30px;
