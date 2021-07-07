@@ -29,7 +29,7 @@
           >
             <li v-for="item in questions" v-bind:key="item.index">
               <span>{{ item.text }}</span>
-              <img :src="currentUrl" class="w-100" @click="nextUrl()" />
+              <img :src="item.image" class="w-100" />
             </li>
           </b-card>
         </b-col>
@@ -125,9 +125,13 @@
 </template>
 
 <script>
+import CameraScreen from "../components/Camera1";
 export default {
   name: "Camera",
   props: {},
+  components: {
+    camera: CameraScreen
+  },
   data() {
     return {
       questionIndex: 0,
@@ -136,22 +140,28 @@ export default {
       isPhotoTaken: false,
       isShotPhoto: false,
       isLoading: false,
-      url1: require("../../src/assets/1.png"),
-      url2: require("../../src/assets/거북남1.jpg"),
-      currentUrl: this.urls[0],
       link: "#",
-      urls: [url1, url2]
+      questions: [
+        {
+          text: "1번자세",
+          image: require("../../src/assets/1.png")
+        },
+        {
+          text: "HTML document start and end with which tag pairs?",
+          responses: [
+            { text: "HTML", correct: true },
+            { text: "WEB" },
+            { text: "HEAD" },
+            { text: "BODY" }
+          ]
+        }
+      ]
     };
   },
   computed: {
     userResponseSkelaton() {
       return Array(this.questions.length).fill(null);
     }
-  },
-  created() {
-    // setTimeout(() => {
-    //   this.questions.image = "https://www.w3schools.com/js/smiley.gif";
-    // }, 5000);
   },
   methods: {
     // restart() {
@@ -173,10 +183,6 @@ export default {
     //   window.CP.exitedLoop(0);
     //   return score;
     // }
-    nextUrl: () => {
-      const currentIndex = urls.findIndex(url => url === currentUrl);
-      this.currentUrl = urls[currentIndex++];
-    },
     toggleCamera() {
       if (this.isCameraOpen) {
         this.isCameraOpen = false;
@@ -240,9 +246,7 @@ export default {
         .replace("image/jpeg", "image/octet-stream");
       download.setAttribute("href", canvas);
     }
-  },
-  beforeMount() {},
-  mounted() {}
+  }
 };
 </script>
 

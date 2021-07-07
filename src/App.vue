@@ -11,7 +11,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 #app {
   min-width: 320px;
   max-width: 960px;

@@ -30,7 +30,6 @@
   </div>
 </template>
 <script>
-import Timer from "./Timer.vue";
 // const URL = "../ml_files/5pose0706mlmodel/";
 // const modelURL = URL + "model.json";
 // const metadataURL = URL + "metadata.json";
@@ -38,7 +37,6 @@ let model, webcam, ctx, labelContainer, maxPredictions;
 // const url1 = require("../../src/assets/1.jpeg");
 export default {
   name: "Camera1",
-
   Timerprops: {},
   data() {
     return {
