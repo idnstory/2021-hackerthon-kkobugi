@@ -1,6 +1,9 @@
 <template>
-  <div class="my-4">
+  <div class="my-4 container">
     <h2 class="font-50">동작을 따라해보세요!</h2>
+    <div class="text-right">
+      <span class="font-30">스코어: {{ score }} /100</span>
+    </div>
     <b-card-group deck>
       <b-row>
         <b-col>
@@ -25,7 +28,6 @@
     <p class="font-50" :class="[resultAnswer ? sucessClass : '', errorClass]">
       결과는? {{ resultAnswer }}
     </p>
-    <span class="font-50">내점수는? {{ score }} /100</span>
   </div>
 </template>
 <script>
@@ -258,6 +260,15 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.container {
+  padding: 20px;
+}
+.text-right {
+  text-align: right;
+}
+.label-container {
+  display: none;
+}
 .text-danger {
   color: red;
 }
@@ -269,7 +280,7 @@ export default {
     font-size: 20px;
   }
   &-30 {
-    font-size: 20px;
+    font-size: 30px;
   }
   &-50 {
     font-size: 50px;
