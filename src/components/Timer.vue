@@ -115,7 +115,7 @@ export default {
   mounted() {
     this.startTimer();
     setTimeout(() => {
-      this.$router.push("/camera");
+      this.$router.push("/camera1");
     }, 5500);
   }
 };
