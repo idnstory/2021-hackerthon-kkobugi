@@ -1,6 +1,6 @@
 <template>
   <div class="base-timer centerp-block">
-    <h1>스트레칭방법</h1>
+    <h1 class="font-50">스트레칭방법</h1>
     <ul>
       <li>전신이 모두 나오도록 카메라 앞에서 주세요</li>
       <li>동작을 5초동안 유지해줍니다.</li>
@@ -126,6 +126,17 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+.font {
+  &-20 {
+    font-size: 20px;
+  }
+  &-30 {
+    font-size: 20px;
+  }
+  &-50 {
+    font-size: 50px;
+  }
+}
 li {
   list-style: none;
   font-size: 20px;
@@ -177,7 +188,7 @@ li {
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 100px;
+    top: 200px;
     display: flex;
     align-items: center;
     justify-content: center;

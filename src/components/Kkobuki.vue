@@ -61,14 +61,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.font {
-  &-20 {
-    font-size: 20px;
-  }
-  &-50 {
-    font-size: 50px;
-  }
-}
 .container {
   position: relative;
   display: flex;

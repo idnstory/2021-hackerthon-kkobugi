@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8">
+  <div class="my-4">
     <h2 class="font-50">동작을 따라해보세요!</h2>
     <b-card-group deck>
       <b-row>
@@ -44,6 +44,11 @@ export default {
       sucessClass: "text-green",
       errorClass: "text-danger",
       imageArray: [
+        {
+          text: "자세준비중",
+          image: require("@/assets/거북남준비중1.jpg"),
+          answer: "white"
+        },
         {
           text: "1번자세",
           image: require("@/assets/pose1-1.png"),
