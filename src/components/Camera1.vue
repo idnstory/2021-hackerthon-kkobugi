@@ -2,6 +2,7 @@
   <div class="my-4 container">
     <h2 class="font-50">동작을 따라해보세요!</h2>
     <div class="text-right">
+      <span class="font-30">[{{ myname }}]님 안녕하세요!            </span>
       <span class="font-30">스코어: {{ score }} /100</span>
     </div>
     <b-card-group deck>
@@ -209,10 +210,7 @@ export default {
   beforeMount() {
     this.init();
   },
-  mounted() {
-    let intervalID = setInterval(() => {
-      this.imageIndex++;
-      if (this.imageIndex == this.imageArray.length) {
+  created() {
         const nameList = [
           "전지현",
           "강동원",
@@ -237,16 +235,20 @@ export default {
           "제니",
           "화사",
           "지민",
-          "진",
+          "진",
           "제이홉",
           "RM",
           "천재"
         ];
-        const randomName =
-          nameList[Math.floor(Math.random() * nameList.length)];
+    this.myname = nameList[Math.floor(Math.random() * nameList.length)];
+  },
+  mounted() {
+    let intervalID = setInterval(() => {
+      this.imageIndex++;
+      if (this.imageIndex == this.imageArray.length) {
         axios
           .post("http://kkobuki.haezoom.io:8080/ranking/ranking/", {
-            name: randomName,
+            name: this.myname,
             score: this.score
           })
           .then(function(response) {
