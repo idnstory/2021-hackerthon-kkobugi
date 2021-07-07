@@ -1,11 +1,15 @@
 import Vue from "vue";
+import LoadScript from "vue-plugin-load-script";
 import VueRouter from "vue-router";
-import LoadScript from 'vue-plugin-load-script';
 
 Vue.use(VueRouter);
 Vue.use(LoadScript);
-Vue.loadScript("https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js")
-Vue.loadScript("https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js")
+Vue.loadScript(
+  "https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"
+);
+Vue.loadScript(
+  "https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"
+);
 
 const routes = [
   {

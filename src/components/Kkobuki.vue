@@ -59,6 +59,7 @@ export default {
   padding-top: 60px;
 }
 a {
+  width: 500px;
   color: #48c9d7;
   text-decoration: none;
   font-size: 20px;
