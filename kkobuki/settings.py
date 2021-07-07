@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['ec2-13-209-9-201.ap-northeast-2.compute.amazonaws.com', 'kkobu
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders', #
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', #
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -87,7 +89,8 @@ DATABASES = {
         'NAME': 'kkobuki',
         'USER': 'kkobuki',
         'PASSWORD': 'kkobuki12#$',
-        'HOST': '13.209.9.201',
+        #'HOST': '13.209.9.201',
+        'HOST': 'localhost',
 
 
 
@@ -138,3 +141,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_WHITELIST = ['http://localhost:8080']
